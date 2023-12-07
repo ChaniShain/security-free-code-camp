@@ -10,14 +10,16 @@ const api = require('./server.js');
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 app.use('/_api', api);
-// הסתרה שלא ידעו שמופעל ע"י express
-app.use(helmet.hidePoweredBy());
-// לא לאפשר לחיצה על קישורים
-app.use(helmet.frameguard({ action: 'deny' }));
-// לא לאפשר scripts
-app.use(helmet.xssFilter());
-// לא לאפשר לתת מידע על הכותרת שחוזרת 
-app.use(helmet.noSniff());
+// // הסתרה שלא ידעו שמופעל ע"י express
+// app.use(helmet.hidePoweredBy());
+// // לא לאפשר לחיצה על קישורים
+// app.use(helmet.frameguard({ action: 'deny' }));
+// // לא לאפשר scripts
+// app.use(helmet.xssFilter());
+// // לא לאפשר לתת מידע על הכותרת שחוזרת 
+// app.use(helmet.noSniff());
+
+app.use(helmet())
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
