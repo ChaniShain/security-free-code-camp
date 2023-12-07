@@ -16,6 +16,8 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.frameguard({ action: 'deny' }));
 // לא לאפשר scripts
 app.use(helmet.xssFilter());
+// לא לאפשר לתת מידע על הכותרת שחוזרת 
+app.use(helmet.noSniff());
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
