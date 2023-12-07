@@ -14,6 +14,8 @@ app.use('/_api', api);
 app.use(helmet.hidePoweredBy());
 // לא לאפשר לחיצה על קישורים
 app.use(helmet.frameguard({ action: 'deny' }));
+// לא לאפשר scripts
+app.use(helmet.xssFilter());
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
