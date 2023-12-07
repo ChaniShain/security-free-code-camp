@@ -1,6 +1,9 @@
 const express = require('express');
 const helmet= require('helmet');
+var cors = require('cors')
 
+
+app.use(cors())
 // הסתרה שלא ידעו שמופעל ע"י express
 app.use(helmet.hidePoweredBy());
 // לא לאפשר לחיצה על קישורים 
